@@ -1,4 +1,5 @@
 # импортируем библиотеки
+import os
 from flask import Flask, request
 import logging
 # библиотека, которая нам понадобится для работы с JSON
@@ -108,4 +109,4 @@ def get_suggests(user_id):
         })
     return suggests
 if __name__ == '__main__':
-    app.run(debug=True, port=33507)
+    app.run(port=os.environ.get("PORT", 5000))
