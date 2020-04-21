@@ -25,6 +25,11 @@ logging.basicConfig(level=logging.INFO)
 # Когда он откажется купить слона,
 # то мы уберем одну подсказку. Как будто что-то меняется :)
 sessionStorage = {}
+
+@app.route("/")
+def hello():
+    return "Alice"
+
 @app.route('/post', methods=['POST'])
 # Функция получает тело запроса и возвращает ответ.
 # Внутри функции доступен request.json - это JSON,
@@ -109,4 +114,5 @@ def get_suggests(user_id):
         })
     return suggests
 if __name__ == '__main__':
-    app.run(port=os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
